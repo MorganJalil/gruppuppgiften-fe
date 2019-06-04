@@ -104,6 +104,7 @@
   window.pageLoaded = pageLoaded;
 
   module.exports = {
+    clearElement,
       testString: function testString(str) {
       return false;
     }
