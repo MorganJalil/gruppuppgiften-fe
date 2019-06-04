@@ -80,7 +80,6 @@ describe('html tests', () => {
         select.click();
         return select;
       })
-
       .then(() => driver.wait(until.elementLocated(By.id('animal-select')), timeout))
       .then(waitUntilLoaded)
       // Get info and see that text is equal to 'Select dog' in select element
