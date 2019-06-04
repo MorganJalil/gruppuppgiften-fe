@@ -72,6 +72,26 @@ describe('html tests', () => {
       });
   });
 
+  test('Select dog option in select list', (done) => {
+    // Find id 'dog, load element and run click-function
+    driver.wait(until.elementLocated(By.id('dog')), timeout)
+      .then((select) => {
+        driver.wait(until.elementIsVisible(select));
+        select.click();
+        return select;
+      })
+
+      .then(() => driver.wait(until.elementLocated(By.id('animal-select')), timeout))
+      .then(waitUntilLoaded)
+      // Get info and see that text is equal to 'Select dog' in select element
+      .then((select) => select.findElements(By.tagName('option')))
+      .then((options) => options[0].getText())
+      .then((text) => {
+        expect(text).toBe('Select dog');
+        done();
+      });
+  });
+
   test('upload animal', (done) => {
     // Find the animal input field and fill it with animal data
     driver.wait(until.elementLocated(By.id('animal-to-add')), timeout)
