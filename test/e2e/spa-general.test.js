@@ -22,6 +22,7 @@ const waitUntilLoaded = (element) => {
 describe('html tests', () => {
   beforeAll((done) => {
     listeningServer = server.listen(PORT);
+    jest.setTimeout(10000);
 
     driver = new Builder().forBrowser('chrome').build();
     driver.get(baseUrl)

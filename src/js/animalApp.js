@@ -105,6 +105,7 @@
 
   module.exports = {
     clearElement,
+    populateSelect,
       testString: function testString(str) {
       return false;
     }
