@@ -2,9 +2,9 @@
     background-color: blanchedalmond;
      width: 350px;
      margin: 0 auto;
-     margin-top: 30vh;
+     margin-top: 10vh;
 }
-.input-animals div {
+.input-animals div, .animal-addition {
     padding: .5em;
 }
 .input-form label, .input-form input, .input-form span {

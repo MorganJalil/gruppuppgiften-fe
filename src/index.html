@@ -23,7 +23,7 @@
                     <label for="animal-select">Select animal</label>
                     <select id="animal-select" data-loaded="false">
                     </select>
-                    <div id="animal-description" data-loaded="false">Please make your selection</div>
+                    <span id="animal-description" data-loaded="false">Please make your selection</span>
                 </div> 
             </div>
             
@@ -38,18 +38,23 @@
             <form id="form">
                 <div>
                     <label for="form1-input1">Name:</label>
-                    <input id="form1-input1" minlength="3" type="text" data-type="name" required/>
+                    <input id="form1-input1" minlength="3" type="text" data-type="name" placeholder="your name" required/>
                     <span class="error">At least three characters needed!</span>
                 </div>
                 <div>
                     <label for="form1-input2">Email:</label>
-                    <input id="form1-input2" type="text" data-type="email" required/>
+                    <input id="form1-input2" type="text" data-type="email" placeholder="hello@hello.com" required/>
                     <span class="error">Input proper email!</span>
                 </div>
                 <div>
                     <label for="form2-input2">Swedish personal number</label>
-                    <input id="form2-input2" type="text" data-type="personal number" required/>
+                    <input id="form2-input2" type="text" data-type="personal number" placeholder="yymmdd-xxxx" required/>
                     <span class="error">In the format of 10 digits delimited by -/+</span>
+                </div>
+                <div>
+                    <label for="form1-input4">Your favourite time of the day</label>
+                    <input id="form2-input2" type="text" data-type="time" placeholder="--:--" required/>
+                    <span class="error">This time format is invalid</span>
                 </div>
                 <button id="form-submit" type="submit">Submit</button>
             </form>
