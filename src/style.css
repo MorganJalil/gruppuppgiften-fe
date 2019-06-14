@@ -1,0 +1,31 @@
+.wrapper {
+    background-color: blanchedalmond;
+     width: 350px;
+     margin: 0 auto;
+     margin-top: 30vh;
+}
+.input-animals div {
+    padding: .5em;
+}
+.input-form label, .input-form input, .input-form span {
+    display: block;
+}
+
+div.input-animals, div.input-form {
+    padding: 1em;
+}
+
+input:invalid,
+input.error {
+    color: red;
+}
+span.error {
+    display: none;
+    font-size: 0.5em;
+}
+input:invalid ~ span.error,
+input.error ~ span.error
+{
+    color: red;
+    display: inline;
+}
