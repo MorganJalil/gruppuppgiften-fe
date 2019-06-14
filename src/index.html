@@ -1,30 +1,65 @@
 <!doctype html>
 <html lang="en">
-<head><title>Little cat fanpage</title></head>
+<head>
+    <title>Little cat fanpage</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
+    <div class="wrapper">
+        <div class="input-animals">
 
-<div id="animal-listing">
-    <label for="animal-type">Select animal type</label>
+            <div id="animal-listing">
+                <div>
+                    <label for="animal-type">Select animal type</label>
+                
+                    <select id="animal-type" data-loaded="false">
+                        <option id="cat" value="cat">Cats</option>
+                        <option id="dog" value="dog">Dogs</option>
+                        <option id="pokemon" value="pokemon">Pokemons</option>
+                    </select>
+                </div>
 
-    <select id="animal-type" data-loaded="false">
-        <option id="cat" value="cat">Cats</option>
-        <option id="dog" value="dog">Dogs</option>
-        <option id="pokemon" value="pokemon">Pokemons</option>
-    </select>
+                <div>
+                    <label for="animal-select">Select animal</label>
+                    <select id="animal-select" data-loaded="false">
+                    </select>
+                    <div id="animal-description" data-loaded="false">Please make your selection</div>
+                </div> 
+            </div>
+            
+            <div id="animal-addition">
+                <label for="animal-to-add">Enter animal data to add (JSON format)</label>
+                <textarea id="animal-to-add"></textarea>
+                <button id="animal-add">Add animal</button>
+            </div>
+        </div>
+   
+        <div class="input-form">
+            <form id="form">
+                <div>
+                    <label for="form1-input1">Name:</label>
+                    <input id="form1-input1" minlength="3" type="text" data-type="name" required/>
+                    <span class="error">At least three characters needed!</span>
+                </div>
+                <div>
+                    <label for="form1-input2">Email:</label>
+                    <input id="form1-input2" type="text" data-type="email" required/>
+                    <span class="error">Input proper email!</span>
+                </div>
+                <div>
+                    <label for="form2-input2">Swedish personal number</label>
+                    <input id="form2-input2" type="text" data-type="personal number" required/>
+                    <span class="error">In the format of 10 digits delimited by -/+</span>
+                </div>
+                <button id="form-submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     
-    <label for="animal-select">Select animal</label>
-    <select id="animal-select" data-loaded="false">
-    </select>
-    <div id="animal-description" data-loaded="false">Please make your selection</div>
-</div>
+    <script src="./js/validation.js"></script>
+    <script>pageLoaded();</script>
 
-<div id="animal-addition">
-    <label for="animal-to-add">Enter animal data to add (JSON format)</label>
-    <textarea id="animal-to-add"></textarea>
-    <button id="animal-add">Add animal</button>
-</div>
-
-<script src="./js/animalApp.js"></script>
-<script>pageLoaded();</script>
+    <script src="./js/animalApp.js"></script>
+    <script>pageLoaded();</script>
 </body>
 </html>
