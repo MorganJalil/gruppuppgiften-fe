@@ -4,7 +4,8 @@
     const pNumPattern = /\d{6}[+-]\d{4}/;
     const namePattern = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
     const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  
+    const datePattern = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
     function onSubmitForm(e) {
       let formValid = true;
       for (let i = 0; i<e.target.length; i++) {
@@ -23,9 +24,19 @@
               e.target[i].className = '';
             }
             break;
-          case 'name':
+
+            case 'time':
+            if (!inputValue.match(datePattern)) {
+              e.target[i].className = 'error';
+              formValid = false;
+            }
+            else {
+              e.target[i].className = '';
+            }
+            break;
+
+            case 'name':
             if (!inputValue.match(namePattern)) {
-              console.log('not valid name');
               e.target[i].className = 'error';
               formValid = false;
             }
@@ -36,7 +47,6 @@
 
             case 'email':
             if (!inputValue.match(emailPattern)) {
-              console.log('not valid email');
               e.target[i].className = 'error';
               formValid = false;
             }
