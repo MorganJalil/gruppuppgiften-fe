@@ -49,8 +49,9 @@
       .then((response) => response.json())
       .then((data) => {
         //const $pre = document.createElement('pre');
-        const text = JSON.stringify(data.data, null, '\t');
-        const $text = document.createTextNode(text);
+        let text = JSON.stringify(data.data, null);
+        text = text.replace(/['"{}]+/g, '');
+        const $text = document.createTextNode(`${text}`);
         //$pre.appendChild($preText);
         $animalDescription.appendChild($text);
         $animalDescription.setAttribute('data-loaded', 'true');
@@ -106,6 +107,7 @@
   module.exports = {
     clearElement,
     populateSelect,
+    getByTypeAndId,
       testString: function testString(str) {
       return false;
     }

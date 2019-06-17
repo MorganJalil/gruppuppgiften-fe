@@ -11,28 +11,28 @@
 // This way we can check the element afterwards and compare it to the expected
 // value
 
-const mockedResponse = {
-    data:[
-      { id: 0, name: 'name1', },
-      { id: 1, name: 'name2', },
-    ]
-  };
+const mockedResult = {
+  data:
+    {
+      name: 'Pikachu', color: 'Yellow', age: 11, id: 1 
+    },
+};
   
-  const mockedJsonPromise = Promise.resolve(mockedResponse);
+  const mockedJsonResultPromise = Promise.resolve(mockedResult);
   
-  const mockedFetchPromise = Promise.resolve({
-    json: () => mockedJsonPromise,
+  const mockedFetchResultPromise = Promise.resolve({
+    json: () => mockedJsonResultPromise,
   });
-  
-  
+
   
   describe('integration tests for populateSelect, clearElement and createOption', () => {
     let fetchBackup, populateSelect;
+    let getByTypeAndId;
     beforeAll(() => {
-      document.body.innerHTML = `<select id="animal-select"><option value="-1">TEST</option></select>`;
+      document.body.innerHTML = '<span id="animal-description" data-loaded="false">Please make your selection</span>';
       fetchBackup = window.fetch;
-      window.fetch = jest.fn().mockReturnValue(mockedFetchPromise);
-      populateSelect = require('../../src/js/animalApp').populateSelect;
+      window.fetch = jest.fn().mockReturnValue(mockedFetchResultPromise);
+      getByTypeAndId = require('../../src/js/animalApp').getByTypeAndId;
     });
   
     afterAll(() => {
@@ -40,27 +40,17 @@ const mockedResponse = {
         window.fetch = fetchBackup;
       }
     });
-  
-    it('should replace old list with new and call fetch once', (done) => {
+
+    it('should display added pokemon in animal-description span.', (done) => {
       // Setup
-      const testType = 'test';
-      const expectedUrl = `http://localhost:3000/${testType}s`;
-      const expectedOutcome1 = `<select id="animal-select" data-loaded="false"></select>`;
-      const expectedOutcome2 = `<select id="animal-select" data-loaded="true"><option value="null">Select ${testType}</option><option value="0">name1</option><option value="1">name2</option></select>`;
-      const $animalSelect = document.getElementById('animal-select');
-  
-      // Test-run
-      populateSelect(testType);
-  
-      // Verify
-      expect($animalSelect.outerHTML).toBe(expectedOutcome1);
-      expect(window.fetch).toHaveBeenCalledTimes(1);
-      expect(window.fetch.mock.calls[0][0]).toBe(expectedUrl);
-  
-      // Resolve the promises and keep verifying
+      const expectedOutcome = 'name:Pikachu,color:Yellow,age:11,id:1';
+      const $animalDescription = document.getElementById('animal-description');
+      expect($animalDescription.innerHTML).toBe('Please make your selection');
+
+      getByTypeAndId('pokemons', '1');
+
       process.nextTick(() => {
-        expect($animalSelect.getAttribute('data-loaded')).toBe('true');
-        expect($animalSelect.outerHTML).toBe(expectedOutcome2);
+        expect($animalDescription.innerHTML).toBe(expectedOutcome);
         done();
       });
     });
