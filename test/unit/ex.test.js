@@ -17,6 +17,15 @@ describe('ClearElement-function should have been called on one time', () => {
   });
 });
 
+describe('createOption-function should create a test-element', () => {
+  test('should create an option element', () => {
+    const createOption = require('../../src/js/animalApp').createOption;
+    const testOption = createOption('test1', 'test');
+    const option = '<option value="test1">test</option>';
+    expect(testOption.outerHTML).toEqual(option);
+  });
+});
+
 describe('test test', () => {
   test('test smoke test', () => {
     expect(strTest()).toBe(false);
