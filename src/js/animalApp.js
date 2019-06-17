@@ -108,6 +108,7 @@
     clearElement,
     populateSelect,
     getByTypeAndId,
+    createOption,
       testString: function testString(str) {
       return false;
     }
