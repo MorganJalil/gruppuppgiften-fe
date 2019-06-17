@@ -94,14 +94,14 @@
     })
   }
 
-  function pageLoaded() {
+  function loadAnimals() {
     populateSelect(animalType);
     listenToSelectType();
     listenToSelect();
     listenToAdd();
   }
 
-  window.pageLoaded = pageLoaded;
+  window.loadAnimals = loadAnimals;
 
   module.exports = {
     clearElement,

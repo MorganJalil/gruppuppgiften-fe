@@ -35,25 +35,25 @@
         </div>
    
         <div class="input-form">
-            <form id="form">
+            <form id="registrationForm">
                 <div>
-                    <label for="form1-input1">Name:</label>
-                    <input id="form1-input1" minlength="3" type="text" data-type="name" placeholder="your name" required/>
+                    <label for="name">Name:</label>
+                    <input id="name" minlength="3" type="text" data-type="name" placeholder="your name" required/>
                     <span class="error">At least three characters needed!</span>
                 </div>
                 <div>
-                    <label for="form1-input2">Email:</label>
-                    <input id="form1-input2" type="text" data-type="email" placeholder="hello@hello.com" required/>
+                    <label for="email">Email:</label>
+                    <input id="email" type="text" data-type="email" placeholder="hello@hello.com" required/>
                     <span class="error">Input proper email!</span>
                 </div>
                 <div>
-                    <label for="form2-input2">Swedish personal number</label>
-                    <input id="form2-input2" type="text" data-type="personal number" placeholder="yymmdd-xxxx" required/>
+                    <label for="personal-number">Swedish personal number</label>
+                    <input id="personal-number" type="text" data-type="personal number" placeholder="yymmdd-xxxx" required/>
                     <span class="error">In the format of 10 digits delimited by -/+</span>
                 </div>
                 <div>
-                    <label for="form1-input4">Your favourite time of the day</label>
-                    <input id="form2-input2" type="text" data-type="time" placeholder="--:--" required/>
+                    <label for="favourite-time">Your favourite time of the day</label>
+                    <input id="favourite-time" type="text" data-type="time" placeholder="--:--" required/>
                     <span class="error">This time format is invalid</span>
                 </div>
                 <button id="form-submit" type="submit">Submit</button>
@@ -62,9 +62,9 @@
     </div>
     
     <script src="./js/validation.js"></script>
-    <script>pageLoaded();</script>
+    <script>validateInput();</script>
 
     <script src="./js/animalApp.js"></script>
-    <script>pageLoaded();</script>
+    <script>loadAnimals();</script>
 </body>
 </html>
