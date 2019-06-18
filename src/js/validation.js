@@ -1,10 +1,10 @@
 (function IIFE() {
-    const $form1 = document.getElementById('form');
+    const $submitForm = document.getElementById('registrationForm');
 
-    const pNumPattern = /\d{6}[+-]\d{4}/;
-    const namePattern = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-    const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const datePattern = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+    const pNumValidation = /\d{6}[+-]\d{4}/;
+    const nameValidation = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+    const emailValidation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const dateValidation = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
     function onSubmitForm(e) {
       let formValid = true;
@@ -15,8 +15,8 @@
   
         switch (inputDataType) {
           case 'personal number':
-            if (!inputValue.match(pNumPattern)) {
-              alert('not personal number');
+            if (!inputValue.match(pNumValidation)) {
+              alert('not a valid personal number');
               e.target[i].className = 'error';
               formValid = false;
             }
@@ -26,7 +26,7 @@
             break;
 
             case 'time':
-            if (!inputValue.match(datePattern)) {
+            if (!inputValue.match(dateValidation)) {
               e.target[i].className = 'error';
               formValid = false;
             }
@@ -36,7 +36,7 @@
             break;
 
             case 'name':
-            if (!inputValue.match(namePattern)) {
+            if (!inputValue.match(nameValidation)) {
               e.target[i].className = 'error';
               formValid = false;
             }
@@ -46,7 +46,7 @@
             break;
 
             case 'email':
-            if (!inputValue.match(emailPattern)) {
+            if (!inputValue.match(emailValidation)) {
               e.target[i].className = 'error';
               formValid = false;
             }
@@ -65,7 +65,6 @@
   
     function onInvalid(e) {
       e.preventDefault();
-      console.log(e.target.getAttribute('id'));
       e.target.style.borderColor = 'red';
     }
   
@@ -76,13 +75,13 @@
     }
   
     function registerListeners() {
-      $form1.addEventListener('submit', onSubmitForm);
-      registerInvalidListeners($form1);  
+      $submitForm.addEventListener('submit', onSubmitForm);
+      registerInvalidListeners($submitForm);  
     }
   
-    function pageLoaded() {
+    function validateInput() {
       registerListeners();
     }
   
-    window.pageLoaded = pageLoaded;
+    window.validateInput = validateInput;
   })();
